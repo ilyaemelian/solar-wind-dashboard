@@ -7,7 +7,8 @@ A predictive alert system for geomagnetic disturbances using NASA solar wind dat
 - Real-time ingestion of NASA solar wind datasets
 - Visualization of plasma flows around Earth
 - Predictive alert system for sensitive users
-- Dashboard display for quick insights
+- This prototype visualizes solar wind events and provides predictive alerts for sensitive users, demonstrating the application of scientific computing skills.
+
 
 ## Tech Stack
 Python | numpy | pandas | matplotlib | Flask/Kivy | NASA API
@@ -18,4 +19,6 @@ Python | numpy | pandas | matplotlib | Flask/Kivy | NASA API
 3. Run `main.py` to start the alert system
 
 ## Status
-Prototype successfully demonstrated at [Olympiad Name] and won the competition. Currently available as documentation and visualizations; code can be restored if needed.
+Prototype successfully demonstrated at "33 International Cosmic Olympiad" and won the competition.
+Currently available as documentation and visualizations; the code can be restored for full functionality if required.
+
