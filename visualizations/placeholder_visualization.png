@@ -1,1 +1,7 @@
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(6,6))
+plt.title("Solar Wind Visualization Placeholder")
+plt.plot([0,1,2], [0,1,0])
+plt.savefig("visualizations/placeholder_visualization.png")
 
