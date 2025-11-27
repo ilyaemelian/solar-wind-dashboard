@@ -1,77 +1,210 @@
 <!DOCTYPE html>
-<html lang="ru">
+
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cosmo — NOAA Space Weather Monitoring</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SolarWind Dashboard — Project</title>
+  <meta name="description" content="SolarWind Dashboard — real-time space weather monitoring using NASA data. Visualizations, alerts, bilingual interface, technical reports."/>
   <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background: #0b0f19; color: #e0e8f0; }
-    header { background: #1a2433; padding: 40px 20px; text-align: center; }
-    header h1 { margin: 0; font-size: 2.5em; color: #00bcd4; }
-    header p { font-size: 1.1em; color: #cfd8e5; }
-    section { padding: 40px 20px; max-width: 800px; margin: auto; }
-    h2 { color: #00bcd4; }
-    ul { line-height: 1.6; }
-    .tech-list, .features-list { list-style: none; padding: 0; }
-    .tech-list li, .features-list li { margin-bottom: 0.5em; }
-    footer { background: #1a2433; padding: 20px; text-align: center; color: #8193a2; }
-    a { color: #00bcd4; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    :root{
+      --bg:#070814;
+      --card:#0e1724;
+      --accent:#00d1ff;
+      --muted:#9fb3c8;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#d8eaf2;background:linear-gradient(180deg,#02030a 0%, #071225 60%);-webkit-font-smoothing:antialiased;line-height:1.5}
+    .container{max-width:var(--maxw);margin:36px auto;padding:20px}
+    header{display:flex;align-items:center;gap:18px;justify-content:space-between}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#01202b,#002f45);
+      display:inline-grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,0.6), inset 0 -6px 20px rgba(255,255,255,0.02)
+    }
+    h1{margin:0;font-size:1.4rem;color:var(--accent);letter-spacing:0.2px}
+    p.lead{margin:0;color:var(--muted)}
+    nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+    .hero{margin-top:26px;padding:28px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 30px rgba(2,6,23,0.6);display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:center}
+    .pitch h2{margin:0 0 8px 0;color:#fff;font-size:1.2rem}
+    .pitch p{margin:0;color:var(--muted)}
+    .cta{margin-top:18px;display:flex;gap:10px}
+    .btn{padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#0077b6);color:#021019;font-weight:600;border:none;cursor:pointer;text-decoration:none}
+    .btn.ghost{background:transparent;color:var(--accent);box-shadow: inset 0 0 0 1px rgba(0,209,255,0.12)}
+    .card{background:var(--card);padding:18px;border-radius:12px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+    section h3{margin-top:0;color:var(--accent)}
+    ul.features{list-style:none;padding:0;margin:10px 0 0 0}
+    ul.features li{padding:6px 0;color:var(--muted)}
+    .media{display:flex;flex-direction:column;gap:12px}
+    .screenshot{width:100%;height:180px;object-fit:cover;border-radius:10px;background:linear-gradient(90deg,#042031,#011827);display:block}
+    footer{margin-top:36px;padding:18px;border-radius:12px;background:var(--glass);display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+    small{color:var(--muted)}
+    .lang-switch{display:flex;gap:6px;align-items:center}
+    .lang-switch button{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;color:var(--muted);cursor:pointer}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Cosmo — NOAA Space Weather Monitoring</h1>
-    <p>Система мониторинга космической погоды с авто-переводом на русский и веб-интерфейсом для управления алертами</p>
-  </header>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.95">
+            <circle cx="12" cy="12" r="9" stroke="#00d1ff" stroke-width="0.8" fill="transparent"/>
+            <path d="M4 16c3-1 6-4 12-6" stroke="#00d1ff" stroke-width="0.9" stroke-linecap="round"/>
+            <circle cx="17" cy="7" r="1.6" fill="#00d1ff"/>
+          </svg>
+        </div>
+        <div>
+          <h1>SolarWind Dashboard</h1>
+          <p class="lead">Real-time space weather monitoring • NASA data • bilingual • alerts & visual analytics</p>
+        </div>
+      </div>
 
-  <section id="about">
-    <h2>🔭 О проекте</h2>
-    <p>Cosmo — система мониторинга космической погоды (данные от NOAA), с визуализацией, переводом интерфейса на русский, цветовой индикацией уровней, прогнозами и удобным веб-интерфейсом.</p>
+```
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="lang-switch" title="Language">
+      <button id="enBtn">EN</button>
+      <button id="ruBtn">RU</button>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#visualizations">Visuals</a>
+      <a href="#docs">Docs</a>
+      <a href="https://github.com/ilyaemelian/solar-wind-dashboard" target="_blank">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" role="region" aria-label="Project overview">
+    <div class="pitch">
+      <h2 id="title_en">Monitoring space weather to protect vulnerable people</h2>
+      <h2 id="title_ru" style="display:none">Мониторинг космической погоды для защиты метеозависимых</h2>
+      <p id="lead_en" style="margin-top:8px">SolarWind Dashboard collects and visualizes NASA solar wind and geomagnetic data in near real-time, issues alerts, and provides interactive analytics intended to inform medical-vulnerable populations, operators and researchers.</p>
+      <p id="lead_ru" style="display:none;margin-top:8px">SolarWind Dashboard собирает и визуализирует данные солнечного ветра и геомагнитные индексы (NASA) в режимe почти реального времени, отправляет алерты и предоставляет инструмент для анализа — полезный для метеозависимых людей и исследователей.</p>
+
+      <div class="cta">
+        <a class="btn" href="#visualizations">View visualizations</a>
+        <a class="btn ghost" href="docs/Project_Summary.pdf" target="_blank">Project Summary (PDF)</a>
+      </div>
+
+      <div style="margin-top:14px">
+        <strong>Key features:</strong>
+        <ul class="features">
+          <li>Real-time ingestion from NASA endpoints (solar wind, Bz, Kp, particle flux)</li>
+          <li>Multi-language (EN/RU) presentation & documentation</li>
+          <li>Alerting rules (Telegram/Email) and levels</li>
+          <li>Interactive Plotly charts + static high-res images for publications</li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="card">
+      <h3>Latest snapshot</h3>
+      <img src="visualizations/placeholder_visualization.png" alt="Visualization placeholder" class="screenshot">
+      <div style="margin-top:10px">
+        <small>Replace with PNG/interactive export from /visualizations</small>
+      </div>
+    </aside>
+  </div>
+
+  <section id="about" style="margin-top:22px">
+    <div class="card">
+      <h3>About the project</h3>
+      <p style="color:var(--muted);margin:8px 0">SolarWind Dashboard is designed to translate raw space weather telemetry into human-actionable information. The system focuses on:</p>
+      <ul style="color:var(--muted)">
+        <li>protecting health-sensitive populations (cardiac patients, elderly)</li>
+        <li>providing transparent reproducible data processing for researchers</li>
+        <li>creating a polished academic case suitable for graduate admissions</li>
+      </ul>
+    </div>
   </section>
 
-  <section id="features">
-    <h2>⚙️ Возможности</h2>
-    <ul class="features-list">
-      <li>Реальное время: получение данных из NOAA Space Weather Prediction Center</li>
-      <li>Автоматический перевод всех текстов с английского на русский</li>
-      <li>Цветовая индикация уровней опасности</li>
-      <li>Прогнозы на 3 дня вперёд</li>
-      <li>Поддержка разных типов алертов: радиоизлучение, геомагнитные события, поток электронов и т.д.</li>
-      <li>Веб-интерфейс + адаптивный дизайн для любых устройств</li>
-      <li>Админ-панель для управления алертами (с защитой паролем)</li>
-    </ul>
+  <section id="visualizations">
+    <div class="grid">
+      <div class="card media">
+        <h3>Visualizations</h3>
+        <p style="color:var(--muted)">High-impact figures to include in your application:</p>
+        <ul style="color:var(--muted)">
+          <li>Solar wind speed (time series)</li>
+          <li>Bz component, sudden southward events</li>
+          <li>Kp index heatmap</li>
+          <li>Particle flux & alert timeline</li>
+        </ul>
+        <p style="margin-top:8px;color:var(--muted)">Place interactive Plotly exports or PNGs in <code>/visualizations</code>. Use 1920×1080 exports for slides/PDF.</p>
+        <a class="btn" href="visualizations/" target="_blank">Open visualizations folder</a>
+      </div>
+
+      <div class="card media">
+        <h3>Data & reproducibility</h3>
+        <p style="color:var(--muted)">Data sources:</p>
+        <ul style="color:var(--muted)">
+          <li>NASA/OMNI, ACE and DSCOVR solar wind products</li>
+          <li>Kp / Dst indices (space weather centers)</li>
+          <li>Historical archives for case studies</li>
+        </ul>
+        <p style="margin-top:6px;color:var(--muted)">Include `notebooks/` with data loading, preprocessing, and figure generation. Add `requirements.txt` and instructions to reproduce results locally.</p>
+        <a class="btn ghost" href="#docs">Open docs</a>
+      </div>
+    </div>
   </section>
 
-  <section id="technologies">
-    <h2>🧰 Технологии</h2>
-    <ul class="tech-list">
-      <li>Backend: Django 4.2+</li>
-      <li>Frontend: Bootstrap 5, Font Awesome</li>
-      <li>Переводы: deep-translator (Google Translate)</li>
-      <li>База данных: SQLite (можно переключить на PostgreSQL/MySQL)</li>
-      <li>API: NOAA Space Weather Prediction Center</li>
-    </ul>
+  <section id="docs" style="margin-top:18px">
+    <div class="card">
+      <h3>Documentation</h3>
+      <p style="color:var(--muted)">Place here:</p>
+      <ul style="color:var(--muted)">
+        <li><strong>docs/Project_Summary.pdf</strong> — 1–2 page summary for admission committees</li>
+        <li><strong>docs/Technical_Report.pdf</strong> — detailed pipeline and methods</li>
+        <li><strong>slides/</strong> — slide deck export (PDF/PPTX)</li>
+      </ul>
+      <p style="margin-top:8px;color:var(--muted)">I can draft both Project Summary and Technical Report in scientific style (English) once you provide specific numbers and 3 best plots.</p>
+    </div>
   </section>
 
-  <section id="installation">
-    <h2>🚀 Как запустить (локально)</h2>
-    <pre>
-git clone https://github.com/ISAYEJIT/cosmo.git  
-cd cosmo  
-python -m venv .venv  
-source .venv/bin/activate  # или .venv\\Scripts\\activate для Windows  
-pip install -r requirements.txt  
-python manage.py makemigrations  
-python manage.py migrate  
-python manage.py runserver
-    </pre>
-    <p>После запуска — открыть <code>http://localhost:8000/</code></p>
-  </section>
+</main>
 
-  <footer>
-    <p>Проект с открытым исходным кодом — <a href="https://github.com/ISAYEJIT/cosmo" target="_blank">GitHub / ISAYEJIT / cosmo</a></p>
-    <p>© 2025</p>
-  </footer>
+<footer>
+  <div>
+    <small>SolarWind Dashboard • © <span id="year"></span> • <a href="https://github.com/ilyaemelian/solar-wind-dashboard" target="_blank">GitHub / ilyaemelian</a></small>
+  </div>
+  <div>
+    <small>Prepared for applications • English first (EN/RU toggle)</small>
+  </div>
+</footer>
+```
+
+  </div>
+
+  <script>
+    // simple language toggle
+    const enBtn = document.getElementById('enBtn');
+    const ruBtn = document.getElementById('ruBtn');
+    const enEls = ['title_en','lead_en'];
+    const ruEls = ['title_ru','lead_ru'];
+    function showLang(lang){
+      if(lang==='ru'){
+        ruEls.forEach(id=>document.getElementById(id).style.display='block');
+        enEls.forEach(id=>document.getElementById(id).style.display='none');
+      } else {
+        enEls.forEach(id=>document.getElementById(id).style.display='block');
+        ruEls.forEach(id=>document.getElementById(id).style.display='none');
+      }
+    }
+    enBtn.addEventListener('click',()=>showLang('en'));
+    ruBtn.addEventListener('click',()=>showLang('ru'));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // default english
+    showLang('en');
+  </script>
+
 </body>
 </html>
