@@ -19,6 +19,6 @@ Python | numpy | pandas | matplotlib | Flask/Kivy | NASA API
 3. Run `main.py` to start the alert system
 
 ## Status
-Prototype successfully demonstrated at "33 International Cosmic Olympiad" and won the competition.
+Prototype successfully demonstrated at "33rd International Cosmic Olympiad" and won the competition.
 Currently available as documentation and visualizations; the code can be restored for full functionality if required.
 
