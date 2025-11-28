@@ -7,7 +7,16 @@ import requests
 import re
 from datetime import datetime
 from typing import List, Dict, Optional
-from ..alerts.alert_models import GeomagneticAlert, ForecastAlert, Alert
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from ..alerts.alert_models import GeomagneticAlert, ForecastAlert, Alert
+else:
+    # Runtime import
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+    from src.alerts.alert_models import GeomagneticAlert, ForecastAlert, Alert
 
 
 class NOAADataFetcher:
