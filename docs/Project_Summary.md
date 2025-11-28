@@ -12,7 +12,7 @@
 
 ## Key Achievement
 
-**Winner** at the **33rd International Cosmic Olympiad** - demonstrating practical application of scientific computing and data engineering skills with real satellite datasets.
+**Winner** at the **33rd International Space Olympiad** - demonstrating practical application of scientific computing and data engineering skills with real satellite datasets.
 
 ## Problem Statement
 
@@ -89,7 +89,7 @@ solar-wind-dashboard/
 ## Project Status
 
 ✅ **Production-Ready System**
-- Successfully demonstrated at **33rd International Cosmic Olympiad**
+- Successfully demonstrated at **33rd International Space Olympiad**
 - Won the competition
 - Real-time data ingestion operational
 - Alert processing and filtering fully implemented
@@ -132,11 +132,10 @@ Developer and Creator
 - **Repository**: https://github.com/ilyaemelian/solar-wind-dashboard
 - **Live Demo**: https://ilyaemelian.github.io/solar-wind-dashboard/
 
-This project was developed independently as part of academic work and won the **33rd International Cosmic Olympiad**.
+This project was developed independently as part of academic work and won the **33rd International Space Olympiad**.
 
 ---
 
 **Project Type**: Scientific computing, Data engineering, Software development  
-**Status**: Production-ready (successfully demonstrated at 33rd International Cosmic Olympiad)  
+**Status**: Production-ready (successfully demonstrated at 33rd International Space Olympiad)  
 **Copyright**: © 2025 Ilya Emelianov. All rights reserved.
-
