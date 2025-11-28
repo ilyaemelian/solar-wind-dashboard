@@ -1,6 +1,6 @@
 """
 Create professional visualizations for SolarWind Dashboard
-High-quality graphics for Columbia University presentation
+High-quality graphics for academic presentations
 """
 
 import numpy as np
@@ -48,7 +48,7 @@ def create_solar_wind_speed_chart():
     output_path = Path(__file__).parent.parent.parent / 'visualizations' / 'solar_wind_speed.png'
     output_path.parent.mkdir(exist_ok=True)
     plt.savefig(output_path, dpi=300, facecolor='#0a0e27', bbox_inches='tight')
-    print(f"✅ Saved: {output_path}")
+    print(f"Saved: {output_path}")
     plt.close()
     
     return output_path
@@ -90,7 +90,7 @@ def create_kp_index_heatmap():
     # Save
     output_path = Path(__file__).parent.parent.parent / 'visualizations' / 'kp_index_heatmap.png'
     plt.savefig(output_path, dpi=300, facecolor='#0a0e27', bbox_inches='tight')
-    print(f"✅ Saved: {output_path}")
+    print(f"Saved: {output_path}")
     plt.close()
     
     return output_path
@@ -140,7 +140,7 @@ def create_alert_timeline():
     # Save
     output_path = Path(__file__).parent.parent.parent / 'visualizations' / 'alert_timeline.png'
     plt.savefig(output_path, dpi=300, facecolor='#0a0e27', bbox_inches='tight')
-    print(f"✅ Saved: {output_path}")
+    print(f"Saved: {output_path}")
     plt.close()
     
     return output_path
@@ -174,7 +174,7 @@ def create_earth_visualization():
     # Save
     output_path = Path(__file__).parent.parent.parent / 'visualizations' / 'earth_solar_wind.png'
     plt.savefig(output_path, dpi=300, facecolor='#0a0e27', bbox_inches='tight')
-    print(f"✅ Saved: {output_path}")
+    print(f"Saved: {output_path}")
     plt.close()
     
     return output_path
@@ -224,7 +224,7 @@ def create_interactive_plotly_chart():
     # Save
     output_path = Path(__file__).parent.parent.parent / 'visualizations' / 'interactive_chart.html'
     fig.write_html(str(output_path))
-    print(f"✅ Saved: {output_path}")
+    print(f"Saved: {output_path}")
     
     return output_path
 
@@ -232,7 +232,7 @@ def create_interactive_plotly_chart():
 def main():
     """Generate all visualizations"""
     print("=" * 60)
-    print("🎨 Creating professional visualizations for SolarWind Dashboard")
+    print("Creating professional visualizations for SolarWind Dashboard")
     print("=" * 60)
     
     visualizations = []
@@ -253,11 +253,11 @@ def main():
     visualizations.append(create_interactive_plotly_chart())
     
     print("\n" + "=" * 60)
-    print("✅ All visualizations created successfully!")
+    print("All visualizations created successfully!")
     print("=" * 60)
     print(f"\nCreated {len(visualizations)} visualizations:")
     for viz in visualizations:
-        print(f"  - {viz.name}")
+        print(f"  - {viz}")
 
 
 if __name__ == "__main__":

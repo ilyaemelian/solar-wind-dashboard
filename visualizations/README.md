@@ -40,5 +40,5 @@ py src\visualization\create_visualizations.py
 
 - All visualizations use dark theme matching the project design
 - Colors: #00d1ff (accent), #9fb3c8 (muted), #0a0e27 (background)
-- Format optimized for Columbia University presentation
+- Format optimized for academic presentations
 

@@ -133,34 +133,50 @@
     <div class="grid">
       <div class="card media">
         <h3>Visualizations</h3>
-        <p style="color:var(--muted)">High-impact figures for Columbia University presentation:</p>
+        <p style="color:var(--muted)">High-impact figures:</p>
         <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px">
           <div>
-            <img src="visualizations/solar_wind_speed.png" alt="Solar Wind Speed" 
-                 style="width:100%;border-radius:8px;margin-bottom:6px"
-                 onerror="this.style.display='none'">
-            <small style="color:var(--muted)">Solar Wind Speed</small>
+            <a href="visualizations/solar_wind_speed.png" target="_blank" style="display:block;cursor:pointer;">
+              <img src="visualizations/solar_wind_speed.png" alt="Solar Wind Speed" 
+                   style="width:100%;border-radius:8px;margin-bottom:6px;transition:transform 0.2s;"
+                   onerror="this.style.display='none'"
+                   onmouseover="this.style.transform='scale(1.05)'"
+                   onmouseout="this.style.transform='scale(1)'">
+            </a>
+            <small style="color:var(--muted)">Solar Wind Speed (click to enlarge)</small>
           </div>
           <div>
-            <img src="visualizations/kp_index_heatmap.png" alt="Kp Index Heatmap" 
-                 style="width:100%;border-radius:8px;margin-bottom:6px"
-                 onerror="this.style.display='none'">
-            <small style="color:var(--muted)">Kp Index Heatmap</small>
+            <a href="visualizations/kp_index_heatmap.png" target="_blank" style="display:block;cursor:pointer;">
+              <img src="visualizations/kp_index_heatmap.png" alt="Kp Index Heatmap" 
+                   style="width:100%;border-radius:8px;margin-bottom:6px;transition:transform 0.2s;"
+                   onerror="this.style.display='none'"
+                   onmouseover="this.style.transform='scale(1.05)'"
+                   onmouseout="this.style.transform='scale(1)'">
+            </a>
+            <small style="color:var(--muted)">Kp Index Heatmap (click to enlarge)</small>
           </div>
           <div>
-            <img src="visualizations/alert_timeline.png" alt="Alert Timeline" 
-                 style="width:100%;border-radius:8px;margin-bottom:6px"
-                 onerror="this.style.display='none'">
-            <small style="color:var(--muted)">Alert Timeline</small>
+            <a href="visualizations/alert_timeline.png" target="_blank" style="display:block;cursor:pointer;">
+              <img src="visualizations/alert_timeline.png" alt="Alert Timeline" 
+                   style="width:100%;border-radius:8px;margin-bottom:6px;transition:transform 0.2s;"
+                   onerror="this.style.display='none'"
+                   onmouseover="this.style.transform='scale(1.05)'"
+                   onmouseout="this.style.transform='scale(1)'">
+            </a>
+            <small style="color:var(--muted)">Alert Timeline (click to enlarge)</small>
           </div>
           <div>
-            <img src="visualizations/earth_solar_wind.png" alt="Earth Visualization" 
-                 style="width:100%;border-radius:8px;margin-bottom:6px"
-                 onerror="this.style.display='none'">
-            <small style="color:var(--muted)">Earth & Solar Wind</small>
+            <a href="visualizations/earth_solar_wind.png" target="_blank" style="display:block;cursor:pointer;">
+              <img src="visualizations/earth_solar_wind.png" alt="Earth Visualization" 
+                   style="width:100%;border-radius:8px;margin-bottom:6px;transition:transform 0.2s;"
+                   onerror="this.style.display='none'"
+                   onmouseover="this.style.transform='scale(1.05)'"
+                   onmouseout="this.style.transform='scale(1)'">
+            </a>
+            <small style="color:var(--muted)">Earth & Solar Wind (click to enlarge)</small>
           </div>
         </div>
-        <p style="margin-top:12px;color:var(--muted)">Professional visualizations created with matplotlib and Plotly. 1920×1080 resolution for PDF/slides.</p>
+        <p style="margin-top:12px;color:var(--muted)">Professional visualizations created with matplotlib and Plotly. 1920×1080 resolution for PDF/slides. Click any image to view full size.</p>
         <div style="margin-top:12px;display:flex;gap:8px">
           <a class="btn" href="visualizations/interactive_chart.html" target="_blank">Interactive Chart</a>
           <a class="btn ghost" href="visualizations/" target="_blank">All Visualizations</a>
@@ -190,7 +206,7 @@
         <li><strong>docs/Technical_Report.pdf</strong> — detailed pipeline and methods</li>
         <li><strong>slides/</strong> — slide deck export (PDF/PPTX)</li>
       </ul>
-      <p style="margin-top:8px;color:var(--muted)">I can draft both Project Summary and Technical Report in scientific style (English) once you provide specific numbers and 3 best plots.</p>
+      <p style="margin-top:8px;color:var(--muted)">Project Summary and Technical Report available in scientific style (English).</p>
     </div>
   </section>
 

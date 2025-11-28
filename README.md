@@ -125,12 +125,7 @@ Geomagnetic storms can affect:
 
 ## Academic Context
 
-This project was developed for:
-- **Columbia University** application
-- **MIT** application  
-- **Stanford** application
-
-Demonstrates:
+This project demonstrates:
 - Scientific computing skills
 - Real-world problem solving
 - Social impact (helping vulnerable populations)
