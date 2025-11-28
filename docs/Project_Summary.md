@@ -1,5 +1,11 @@
 # Project Summary: NASA Solar Wind Health Alert System
 
+**Author:** Ilya Emelianov  
+**GitHub:** https://github.com/ilyaemelian/solar-wind-dashboard  
+**Date:** November 2025
+
+---
+
 ## Project Overview
 
 **SolarWind Dashboard** is a real-time space weather monitoring system designed to protect health-sensitive populations from geomagnetic disturbances. The system uses NASA/NOAA solar wind data to provide early warnings for cardiovascular patients, elderly individuals, and other weather-sensitive people.
@@ -115,7 +121,21 @@ The system successfully bridges space weather science and public health, providi
 
 ---
 
+## Author Information
+
+**Ilya Emelianov**  
+Developer and Creator
+
+- **GitHub**: https://github.com/ilyaemelian
+- **Repository**: https://github.com/ilyaemelian/solar-wind-dashboard
+- **Live Demo**: https://ilyaemelian.github.io/solar-wind-dashboard/
+
+This project was developed independently as part of academic work and won the **33rd International Cosmic Olympiad**.
+
+---
+
 **Prepared for**: Graduate school applications  
 **Project Type**: Scientific computing, Data engineering, Software development  
-**Status**: Production-ready prototype
+**Status**: Production-ready prototype  
+**Copyright**: © 2025 Ilya Emelianov. All rights reserved.
 

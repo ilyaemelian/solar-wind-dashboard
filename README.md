@@ -1,6 +1,6 @@
-# NASA Solar Wind Health Alert System
+# 🌌 NASA Solar Wind Health Alert System
 
-## Overview
+## 📋 Overview
 A predictive alert system for geomagnetic disturbances using NASA/NOAA space weather data. Designed specifically for **weather-sensitive people**, including:
 - **Cardiovascular patients** (heart disease, hypertension)
 - **Elderly individuals** (increased sensitivity to geomagnetic storms)
@@ -8,27 +8,27 @@ A predictive alert system for geomagnetic disturbances using NASA/NOAA space wea
 
 The system monitors space weather events and provides early warnings when geomagnetic disturbances may affect health-sensitive populations.
 
-## Features
+## ✨ Features
 
-### Core Functionality
+### 🔄 Core Functionality
 - **Real-time data ingestion** from NOAA Space Weather Prediction Center
 - **Health-focused alert system** - filters alerts relevant for weather-sensitive people
 - **Multi-language support** - English and Russian translations
 - **Severity classification** - G1 (Minor) to G5 (Extreme) based on NOAA scale
 - **Health impact assessment** - specific warnings for cardiovascular patients and elderly
 
-### Alert Types
+### 📊 Alert Types
 - **Geomagnetic Alerts (K-index)** - Most relevant for health impacts
 - **Forecast Alerts** - Storm predictions and warnings
 - **Radio Emission Alerts** - Type II radio bursts
 - **Electron Flux Alerts** - High-energy particle events
 
-### Health Impact Levels
+### ⚠️ Health Impact Levels
 - **G3 (Strong)** and above: Significant impact on weather-sensitive people
 - **G4 (Severe)**: High risk for heart patients and elderly
 - **G5 (Extreme)**: All weather-sensitive people should take precautions
 
-## Tech Stack
+## 🛠️ Tech Stack
 - **Python 3.8+**
 - **Data Processing**: numpy, pandas
 - **Visualization**: matplotlib, plotly
@@ -36,7 +36,7 @@ The system monitors space weather events and provides early warnings when geomag
 - **API**: requests for NOAA data
 - **Web Framework**: Flask (optional)
 
-## Installation
+## 📦 Installation
 
 1. **Clone the repository**
 ```bash
@@ -54,7 +54,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## Usage
+## 🚀 Usage
 
 ### Basic Usage
 ```python
@@ -80,7 +80,7 @@ The system automatically:
 4. Translates to Russian (if needed)
 5. Generates health impact assessments
 
-## Project Status
+## 🏆 Project Status
 
 ✅ **Prototype Status**: Successfully demonstrated at "33rd International Cosmic Olympiad" and won the competition.
 
@@ -91,7 +91,7 @@ The system automatically:
 - Multi-language support
 - Visualization capabilities
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 solar-wind-dashboard/
@@ -107,7 +107,7 @@ solar-wind-dashboard/
 └── README.md               # This file
 ```
 
-## Health Impact Information
+## 💊 Health Impact Information
 
 ### Why This Matters
 Geomagnetic storms can affect:
@@ -123,7 +123,7 @@ Geomagnetic storms can affect:
 - **G4 (Severe)**: Widespread voltage problems, transformer damage - **high risk for heart patients**
 - **G5 (Extreme)**: Complete power grid collapse possible - **all weather-sensitive people at risk**
 
-## Academic Context
+## 🎓 Academic Context
 
 This project demonstrates:
 - Scientific computing skills
@@ -132,11 +132,17 @@ This project demonstrates:
 - Data engineering and visualization
 - Software development with real satellite data
 
-## License
+## 📄 License
 
 MIT License
 
-## Acknowledgments
+## 👤 Author
+
+**Ilya Emelianov**
+- GitHub: [@ilyaemelian](https://github.com/ilyaemelian)
+- Project: [solar-wind-dashboard](https://github.com/ilyaemelian/solar-wind-dashboard)
+
+## 🙏 Acknowledgments
 
 - NOAA Space Weather Prediction Center for providing data
 - NASA for solar wind datasets
