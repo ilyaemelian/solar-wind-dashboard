@@ -20,8 +20,14 @@ This directory contains professional visualizations for the SolarWind Dashboard 
 To create/update visualizations:
 
 ```bash
-cd D:\myapp\ilyaemelianov.com\public_html\postuplenie\new-dashboard
-py src\visualization\create_visualizations.py
+cd solar-wind-dashboard
+python src/visualization/create_visualizations.py
+```
+
+Or if you're using Python 3 specifically:
+
+```bash
+python3 src/visualization/create_visualizations.py
 ```
 
 ## Requirements
