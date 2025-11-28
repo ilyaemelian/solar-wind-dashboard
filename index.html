@@ -240,16 +240,22 @@
       <p id="docs_desc_ru" style="color:var(--muted);display:none">Документация:</p>
       <ul id="docs_list_en" style="color:var(--muted)">
         <li><strong>docs/Project_Summary.md</strong> — Project summary (Markdown format)</li>
+        <li><strong>slides/Project_Presentation.pdf</strong> — Project presentation slides</li>
         <li><strong>README.md</strong> — Complete project documentation</li>
         <li><strong>visualizations/</strong> — Professional charts and graphs</li>
       </ul>
       <ul id="docs_list_ru" style="color:var(--muted);display:none">
         <li><strong>docs/Project_Summary.md</strong> — Краткое описание проекта (формат Markdown)</li>
+        <li><strong>slides/Project_Presentation.pdf</strong> — Презентация проекта</li>
         <li><strong>README.md</strong> — Полная документация проекта</li>
         <li><strong>visualizations/</strong> — Профессиональные графики и диаграммы</li>
       </ul>
-      <p id="docs_note_en" style="margin-top:8px;color:var(--muted)">Project Summary available in Markdown format. Can be converted to PDF if needed.</p>
-      <p id="docs_note_ru" style="margin-top:8px;color:var(--muted);display:none">Краткое описание проекта доступно в формате Markdown. Можно конвертировать в PDF при необходимости.</p>
+      <p id="docs_note_en" style="margin-top:8px;color:var(--muted)">Project Summary and presentation slides available. Project Summary can be converted to PDF if needed.</p>
+      <p id="docs_note_ru" style="margin-top:8px;color:var(--muted);display:none">Краткое описание проекта и слайды презентации доступны. Краткое описание можно конвертировать в PDF при необходимости.</p>
+      <div style="margin-top:12px">
+        <a class="btn" href="slides/Project_Presentation.pdf" target="_blank" id="btn_slides_en" style="display:inline-block">View Presentation</a>
+        <a class="btn" href="slides/Project_Presentation.pdf" target="_blank" id="btn_slides_ru" style="display:none">Просмотр презентации</a>
+      </div>
     </div>
   </section>
 
@@ -274,12 +280,12 @@
                    'latest_snapshot_en','snapshot_desc_en','about_title_en','about_desc_en','about_list_en',
                    'viz_title_en','viz_desc_en','label_speed_en','label_kp_en','label_timeline_en','label_earth_en',
                    'viz_note_en','btn_interactive_en','btn_all_viz_en','data_title_en','data_sources_en','data_list_en',
-                   'data_note_en','btn_docs_en','docs_title_en','docs_desc_en','docs_list_en','docs_note_en'];
+                   'data_note_en','btn_docs_en','docs_title_en','docs_desc_en','docs_list_en','docs_note_en','btn_slides_en'];
     const ruEls = ['title_ru','lead_ru','btn_view_viz_ru','btn_pdf_ru','key_features_ru','features_list_ru',
                    'latest_snapshot_ru','snapshot_desc_ru','about_title_ru','about_desc_ru','about_list_ru',
                    'viz_title_ru','viz_desc_ru','label_speed_ru','label_kp_ru','label_timeline_ru','label_earth_ru',
                    'viz_note_ru','btn_interactive_ru','btn_all_viz_ru','data_title_ru','data_sources_ru','data_list_ru',
-                   'data_note_ru','btn_docs_ru','docs_title_ru','docs_desc_ru','docs_list_ru','docs_note_ru'];
+                   'data_note_ru','btn_docs_ru','docs_title_ru','docs_desc_ru','docs_list_ru','docs_note_ru','btn_slides_ru'];
     function showLang(lang){
       if(lang==='ru'){
         ruEls.forEach(id=>{
