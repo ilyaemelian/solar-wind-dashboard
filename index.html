@@ -109,9 +109,10 @@
 
     <aside class="card">
       <h3>Latest snapshot</h3>
-      <img src="visualizations/placeholder_visualization.png" alt="Visualization placeholder" class="screenshot">
+      <img src="visualizations/solar_wind_speed.png" alt="Solar Wind Speed Chart" class="screenshot" 
+           onerror="this.src='visualizations/placeholder_visualization.png'; this.onerror=null;">
       <div style="margin-top:10px">
-        <small>Replace with PNG/interactive export from /visualizations</small>
+        <small>Real-time solar wind monitoring</small>
       </div>
     </aside>
   </div>
@@ -132,15 +133,38 @@
     <div class="grid">
       <div class="card media">
         <h3>Visualizations</h3>
-        <p style="color:var(--muted)">High-impact figures to include in your application:</p>
-        <ul style="color:var(--muted)">
-          <li>Solar wind speed (time series)</li>
-          <li>Bz component, sudden southward events</li>
-          <li>Kp index heatmap</li>
-          <li>Particle flux & alert timeline</li>
-        </ul>
-        <p style="margin-top:8px;color:var(--muted)">Place interactive Plotly exports or PNGs in <code>/visualizations</code>. Use 1920×1080 exports for slides/PDF.</p>
-        <a class="btn" href="visualizations/" target="_blank">Open visualizations folder</a>
+        <p style="color:var(--muted)">High-impact figures for Columbia University presentation:</p>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px">
+          <div>
+            <img src="visualizations/solar_wind_speed.png" alt="Solar Wind Speed" 
+                 style="width:100%;border-radius:8px;margin-bottom:6px"
+                 onerror="this.style.display='none'">
+            <small style="color:var(--muted)">Solar Wind Speed</small>
+          </div>
+          <div>
+            <img src="visualizations/kp_index_heatmap.png" alt="Kp Index Heatmap" 
+                 style="width:100%;border-radius:8px;margin-bottom:6px"
+                 onerror="this.style.display='none'">
+            <small style="color:var(--muted)">Kp Index Heatmap</small>
+          </div>
+          <div>
+            <img src="visualizations/alert_timeline.png" alt="Alert Timeline" 
+                 style="width:100%;border-radius:8px;margin-bottom:6px"
+                 onerror="this.style.display='none'">
+            <small style="color:var(--muted)">Alert Timeline</small>
+          </div>
+          <div>
+            <img src="visualizations/earth_solar_wind.png" alt="Earth Visualization" 
+                 style="width:100%;border-radius:8px;margin-bottom:6px"
+                 onerror="this.style.display='none'">
+            <small style="color:var(--muted)">Earth & Solar Wind</small>
+          </div>
+        </div>
+        <p style="margin-top:12px;color:var(--muted)">Professional visualizations created with matplotlib and Plotly. 1920×1080 resolution for PDF/slides.</p>
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <a class="btn" href="visualizations/interactive_chart.html" target="_blank">Interactive Chart</a>
+          <a class="btn ghost" href="visualizations/" target="_blank">All Visualizations</a>
+        </div>
       </div>
 
       <div class="card media">
