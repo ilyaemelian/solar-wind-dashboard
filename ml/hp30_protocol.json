@@ -1,0 +1,10 @@
+{
+  "source": "https://kp.gfz.de/fileadmin/files_for_gfz_cms/Hp30_ap30_complete_series.txt",
+  "doi": "10.5880/hpo.0003",
+  "as_issued": false,
+  "start": "2013-12-31T00:00:00+00:00",
+  "end_exclusive": "2026-01-01T00:00:00+00:00",
+  "rows": 210432,
+  "parsed_sha256": "75d73e8fca71bf535b56bc8f3bf5b4fd8a1f0201c715f4c86c9ea50ed408ab64",
+  "assumed_buffer_minutes": 30
+}

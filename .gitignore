@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.py[cod]
+/.ml-cache/
+/.ml-output/
+/output/
+/ml/OPERATIONAL_MODEL_REVIEW_RU.md

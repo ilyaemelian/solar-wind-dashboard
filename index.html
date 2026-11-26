@@ -1,318 +1,118 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SolarWind Dashboard — Project</title>
-  <meta name="description" content="SolarWind Dashboard — real-time space weather monitoring using NASA data. Visualizations, alerts, bilingual interface, technical reports."/>
-  <style>
-    :root{
-      --bg:#070814;
-      --card:#0e1724;
-      --accent:#00d1ff;
-      --muted:#9fb3c8;
-      --glass: rgba(255,255,255,0.03);
-      --radius:14px;
-      --maxw:1100px;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#d8eaf2;background:linear-gradient(180deg,#02030a 0%, #071225 60%);-webkit-font-smoothing:antialiased;line-height:1.5}
-    .container{max-width:var(--maxw);margin:36px auto;padding:20px}
-    header{display:flex;align-items:center;gap:18px;justify-content:space-between}
-    .brand{display:flex;gap:14px;align-items:center}
-    .logo{
-      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#01202b,#002f45);
-      display:inline-grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,0.6), inset 0 -6px 20px rgba(255,255,255,0.02)
-    }
-    h1{margin:0;font-size:1.4rem;color:var(--accent);letter-spacing:0.2px}
-    p.lead{margin:0;color:var(--muted)}
-    nav a{color:var(--muted);text-decoration:none;margin-left:14px}
-    .hero{margin-top:26px;padding:28px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 30px rgba(2,6,23,0.6);display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:center}
-    .pitch h2{margin:0 0 8px 0;color:#fff;font-size:1.2rem}
-    .pitch p{margin:0;color:var(--muted)}
-    .cta{margin-top:18px;display:flex;gap:10px}
-    .btn{padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#0077b6);color:#021019;font-weight:600;border:none;cursor:pointer;text-decoration:none}
-    .btn.ghost{background:transparent;color:var(--accent);box-shadow: inset 0 0 0 1px rgba(0,209,255,0.12)}
-    .card{background:var(--card);padding:18px;border-radius:12px}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
-    section h3{margin-top:0;color:var(--accent)}
-    ul.features{list-style:none;padding:0;margin:10px 0 0 0}
-    ul.features li{padding:6px 0;color:var(--muted)}
-    .media{display:flex;flex-direction:column;gap:12px}
-    .screenshot{width:100%;height:180px;object-fit:cover;border-radius:10px;background:linear-gradient(90deg,#042031,#011827);display:block}
-    footer{margin-top:36px;padding:18px;border-radius:12px;background:var(--glass);display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
-    small{color:var(--muted)}
-    .lang-switch{display:flex;gap:6px;align-items:center}
-    .lang-switch button{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;color:var(--muted);cursor:pointer}
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Solar wind, geomagnetic activity and official space weather bulletins from NOAA SWPC.">
+  <title>SolarWind | Space weather dashboard</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+  <script type="module" src="/static/dashboard.js"></script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.95">
-            <circle cx="12" cy="12" r="9" stroke="#00d1ff" stroke-width="0.8" fill="transparent"/>
-            <path d="M4 16c3-1 6-4 12-6" stroke="#00d1ff" stroke-width="0.9" stroke-linecap="round"/>
-            <circle cx="17" cy="7" r="1.6" fill="#00d1ff"/>
-          </svg>
-        </div>
-        <div>
-          <h1>SolarWind Dashboard</h1>
-          <p class="lead">Real-time space weather monitoring • NASA data • bilingual • alerts & visual analytics</p>
-        </div>
-      </div>
-
-  <div style="display:flex;align-items:center;gap:12px">
-    <div class="lang-switch" title="Language">
-      <button id="enBtn">EN</button>
-      <button id="ruBtn">RU</button>
+  <header class="masthead">
+    <div class="shell masthead-inner">
+      <span class="brand"><span class="brand-mark" aria-hidden="true">✳</span> SolarWind</span>
+      <label class="timezone"><span class="sr-only">Time zone</span>
+        <select id="timezone">
+          <option value="Asia/Singapore">SGT</option>
+          <option value="UTC">UTC</option>
+        </select>
+      </label>
     </div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#visualizations">Visuals</a>
-      <a href="#docs">Docs</a>
-      <a href="https://github.com/ilyaemelian/solar-wind-dashboard" target="_blank">GitHub</a>
-    </nav>
-  </div>
-</header>
+  </header>
 
-<main>
-  <div class="hero" role="region" aria-label="Project overview">
-    <div class="pitch">
-      <h2 id="title_en">Monitoring space weather to protect vulnerable people</h2>
-      <h2 id="title_ru" style="display:none">Мониторинг космической погоды для защиты метеозависимых</h2>
-      <p id="lead_en" style="margin-top:8px">SolarWind Dashboard collects and visualizes NASA solar wind and geomagnetic data in near real-time, issues alerts, and provides interactive analytics intended to inform medical-vulnerable populations, operators and researchers.</p>
-      <p id="lead_ru" style="display:none;margin-top:8px">SolarWind Dashboard собирает и визуализирует данные солнечного ветра и геомагнитные индексы (NASA) в режимe почти реального времени, отправляет алерты и предоставляет инструмент для анализа — полезный для метеозависимых людей и исследователей.</p>
-
-      <div class="cta">
-        <a class="btn" href="#visualizations" id="btn_view_viz_en">View visualizations</a>
-        <a class="btn" href="#visualizations" id="btn_view_viz_ru" style="display:none">Просмотр визуализаций</a>
-        <a class="btn ghost" href="docs/Project_Summary.pdf" target="_blank" id="btn_pdf_en">Project Summary (PDF)</a>
-        <a class="btn ghost" href="docs/Project_Summary.pdf" target="_blank" id="btn_pdf_ru" style="display:none">Краткое описание (PDF)</a>
+  <main class="shell">
+    <section class="page-intro" aria-labelledby="dashboard-title">
+      <div>
+        <h1 id="dashboard-title">Space weather dashboard</h1>
       </div>
-
-      <div style="margin-top:14px">
-        <strong id="key_features_en">Key features:</strong>
-        <strong id="key_features_ru" style="display:none">Ключевые возможности:</strong>
-        <ul class="features" id="features_list_en">
-          <li>Real-time ingestion from NASA endpoints (solar wind, Bz, Kp, particle flux)</li>
-          <li>Multi-language (EN/RU) presentation & documentation</li>
-          <li>Alerting rules (Telegram/Email) and levels</li>
-          <li>Interactive Plotly charts + static high-res images for publications</li>
-        </ul>
-        <ul class="features" id="features_list_ru" style="display:none">
-          <li>Получение данных в реальном времени с эндпоинтов NASA (солнечный ветер, Bz, Kp, потоки частиц)</li>
-          <li>Многоязычная (EN/RU) презентация и документация</li>
-          <li>Правила алертов (Telegram/Email) и уровни</li>
-          <li>Интерактивные графики Plotly + статические изображения высокого разрешения для публикаций</li>
-        </ul>
-      </div>
-    </div>
-
-    <aside class="card">
-      <h3 id="latest_snapshot_en">Latest snapshot</h3>
-      <h3 id="latest_snapshot_ru" style="display:none">Последний снимок</h3>
-      <img src="visualizations/solar_wind_speed.png" alt="Solar Wind Speed Chart" class="screenshot" 
-           onerror="this.src='visualizations/placeholder_visualization.png'; this.onerror=null;">
-      <div style="margin-top:10px">
-        <small id="snapshot_desc_en">Real-time solar wind monitoring</small>
-        <small id="snapshot_desc_ru" style="display:none">Мониторинг солнечного ветра в реальном времени</small>
-      </div>
-    </aside>
-  </div>
-
-  <section id="about" style="margin-top:22px">
-    <div class="card">
-      <h3 id="about_title_en">About the project</h3>
-      <h3 id="about_title_ru" style="display:none">О проекте</h3>
-      <p id="about_desc_en" style="color:var(--muted);margin:8px 0">SolarWind Dashboard is designed to translate raw space weather telemetry into human-actionable information. The system focuses on:</p>
-      <p id="about_desc_ru" style="color:var(--muted);margin:8px 0;display:none">SolarWind Dashboard предназначен для преобразования сырых данных космической погоды в информацию, пригодную для использования людьми. Система фокусируется на:</p>
-      <ul id="about_list_en" style="color:var(--muted)">
-        <li>protecting health-sensitive populations (cardiac patients, elderly)</li>
-        <li>providing transparent reproducible data processing for researchers</li>
-        <li>creating a polished academic case suitable for graduate admissions</li>
-      </ul>
-      <ul id="about_list_ru" style="color:var(--muted);display:none">
-        <li>защите метеозависимых людей (сердечные больные, пожилые)</li>
-        <li>предоставлении прозрачной воспроизводимой обработки данных для исследователей</li>
-        <li>создании качественного академического кейса для поступления в аспирантуру</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="visualizations">
-    <div class="grid">
-      <div class="card media">
-        <h3 id="viz_title_en">Visualizations</h3>
-        <h3 id="viz_title_ru" style="display:none">Визуализации</h3>
-        <p id="viz_desc_en" style="color:var(--muted)">High-impact figures:</p>
-        <p id="viz_desc_ru" style="color:var(--muted);display:none">Высококачественные графики:</p>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px">
-          <div>
-            <a href="visualizations/solar_wind_speed.png" target="_blank" style="display:block;cursor:pointer;">
-              <img src="visualizations/solar_wind_speed.png" alt="Solar Wind Speed" 
-                   style="width:100%;border-radius:8px;margin-bottom:6px;transition:transform 0.2s;"
-                   onerror="this.style.display='none'"
-                   onmouseover="this.style.transform='scale(1.05)'"
-                   onmouseout="this.style.transform='scale(1)'">
-            </a>
-            <small style="color:var(--muted)" id="label_speed_en">Solar Wind Speed (click to enlarge)</small>
-            <small style="color:var(--muted);display:none" id="label_speed_ru">Скорость солнечного ветра (нажмите для увеличения)</small>
-          </div>
-          <div>
-            <a href="visualizations/kp_index_heatmap.png" target="_blank" style="display:block;cursor:pointer;">
-              <img src="visualizations/kp_index_heatmap.png" alt="Kp Index Heatmap" 
-                   style="width:100%;border-radius:8px;margin-bottom:6px;transition:transform 0.2s;"
-                   onerror="this.style.display='none'"
-                   onmouseover="this.style.transform='scale(1.05)'"
-                   onmouseout="this.style.transform='scale(1)'">
-            </a>
-            <small style="color:var(--muted)" id="label_kp_en">Kp Index Heatmap (click to enlarge)</small>
-            <small style="color:var(--muted);display:none" id="label_kp_ru">Тепловая карта Kp-индекса (нажмите для увеличения)</small>
-          </div>
-          <div>
-            <a href="visualizations/alert_timeline.png" target="_blank" style="display:block;cursor:pointer;">
-              <img src="visualizations/alert_timeline.png" alt="Alert Timeline" 
-                   style="width:100%;border-radius:8px;margin-bottom:6px;transition:transform 0.2s;"
-                   onerror="this.style.display='none'"
-                   onmouseover="this.style.transform='scale(1.05)'"
-                   onmouseout="this.style.transform='scale(1)'">
-            </a>
-            <small style="color:var(--muted)" id="label_timeline_en">Alert Timeline (click to enlarge)</small>
-            <small style="color:var(--muted);display:none" id="label_timeline_ru">Хронология алертов (нажмите для увеличения)</small>
-          </div>
-          <div>
-            <a href="visualizations/earth_solar_wind.png" target="_blank" style="display:block;cursor:pointer;">
-              <img src="visualizations/earth_solar_wind.png" alt="Earth Visualization" 
-                   style="width:100%;border-radius:8px;margin-bottom:6px;transition:transform 0.2s;"
-                   onerror="this.style.display='none'"
-                   onmouseover="this.style.transform='scale(1.05)'"
-                   onmouseout="this.style.transform='scale(1)'">
-            </a>
-            <small style="color:var(--muted)" id="label_earth_en">Earth & Solar Wind (click to enlarge)</small>
-            <small style="color:var(--muted);display:none" id="label_earth_ru">Земля и солнечный ветер (нажмите для увеличения)</small>
-          </div>
+      <div class="connection">
+        <div class="connection-controls">
+          <span id="connection" class="status" role="status" data-state="loading">Connecting to NOAA</span>
+          <button type="button" id="refresh">Refresh</button>
         </div>
-        <p id="viz_note_en" style="margin-top:12px;color:var(--muted)">Professional visualizations created with matplotlib and Plotly. 1920×1080 resolution for PDF/slides. Click any image to view full size.</p>
-        <p id="viz_note_ru" style="margin-top:12px;color:var(--muted);display:none">Профессиональные визуализации созданы с помощью matplotlib и Plotly. Разрешение 1920×1080 для PDF/слайдов. Нажмите на любое изображение для просмотра в полном размере.</p>
-        <div style="margin-top:12px;display:flex;gap:8px">
-          <a class="btn" href="visualizations/interactive_chart.html" target="_blank" id="btn_interactive_en">Interactive Chart</a>
-          <a class="btn" href="visualizations/interactive_chart.html" target="_blank" id="btn_interactive_ru" style="display:none">Интерактивный график</a>
-          <a class="btn ghost" href="visualizations/" target="_blank" id="btn_all_viz_en">All Visualizations</a>
-          <a class="btn ghost" href="visualizations/" target="_blank" id="btn_all_viz_ru" style="display:none">Все визуализации</a>
+        <p id="last-check"></p>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Latest measurements">
+      <article class="metric" data-metric="speed"><h2>Solar wind speed</h2><p class="reading"><strong>—</strong> <span>km/s</span></p><p class="measurement">Awaiting NOAA data</p></article>
+      <article class="metric" data-metric="density"><h2>Proton density</h2><p class="reading"><strong>—</strong> <span>cm⁻³</span></p><p class="measurement">Awaiting NOAA data</p></article>
+      <article class="metric" data-metric="bz"><h2>Magnetic field Bz <abbr title="Geocentric Solar Magnetospheric">(GSM)</abbr></h2><p class="reading"><strong>—</strong> <span>nT</span></p><p class="measurement">Awaiting NOAA data</p></article>
+      <article class="metric kp-metric" data-metric="kp"><div class="panel-heading"><h2>Planetary Kp</h2><span id="kp-level" class="kp-level" hidden></span></div><p class="reading"><strong>—</strong> <span>/ 9</span></p><p class="measurement">Waiting for NOAA</p></article>
+    </section>
+
+    <section id="telemetry" aria-labelledby="telemetry-heading">
+      <div class="section-heading">
+        <h2 id="telemetry-heading">Solar wind</h2>
+        <div class="segmented" aria-label="Telemetry time range">
+          <button type="button" data-hours="2" aria-pressed="false">2h</button>
+          <button type="button" data-hours="6" aria-pressed="false">6h</button>
+          <button type="button" data-hours="24" aria-pressed="true">24h</button>
         </div>
       </div>
-
-      <div class="card media">
-        <h3 id="data_title_en">Data & reproducibility</h3>
-        <h3 id="data_title_ru" style="display:none">Данные и воспроизводимость</h3>
-        <p id="data_sources_en" style="color:var(--muted)">Data sources:</p>
-        <p id="data_sources_ru" style="color:var(--muted);display:none">Источники данных:</p>
-        <ul id="data_list_en" style="color:var(--muted)">
-          <li>NASA/OMNI, ACE and DSCOVR solar wind products</li>
-          <li>Kp / Dst indices (space weather centers)</li>
-          <li>Historical archives for case studies</li>
-        </ul>
-        <ul id="data_list_ru" style="color:var(--muted);display:none">
-          <li>Продукты NASA/OMNI, ACE и DSCOVR по солнечному ветру</li>
-          <li>Индексы Kp / Dst (центры космической погоды)</li>
-          <li>Исторические архивы для кейс-стади</li>
-        </ul>
-        <p id="data_note_en" style="margin-top:6px;color:var(--muted)">Include `notebooks/` with data loading, preprocessing, and figure generation. Add `requirements.txt` and instructions to reproduce results locally.</p>
-        <p id="data_note_ru" style="margin-top:6px;color:var(--muted);display:none">Включите `notebooks/` с загрузкой данных, предобработкой и генерацией графиков. Добавьте `requirements.txt` и инструкции для локального воспроизведения результатов.</p>
-        <a class="btn ghost" href="#docs" id="btn_docs_en">Open docs</a>
-        <a class="btn ghost" href="#docs" id="btn_docs_ru" style="display:none">Открыть документацию</a>
+      <div class="panel-grid">
+        <article class="panel" data-chart="speed">
+          <div class="panel-heading"><h3>Wind speed <span>km/s</span></h3><span class="status chart-status" data-state="loading">Loading</span></div>
+          <div class="chart"><canvas role="img" aria-label="Solar wind speed over time"></canvas><p class="chart-empty">Waiting for NOAA…</p></div>
+          <p class="inspect"></p>
+        </article>
+        <article class="panel" data-chart="bz">
+          <div class="panel-heading"><h3>Magnetic field Bz <span>nT</span></h3><span class="status chart-status" data-state="loading">Loading</span></div>
+          <div class="chart"><canvas role="img" aria-label="Solar wind magnetic field Bz over time"></canvas><p class="chart-empty">Waiting for NOAA…</p></div>
+          <p class="inspect"></p>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="docs" style="margin-top:18px">
-    <div class="card">
-      <h3 id="docs_title_en">Documentation</h3>
-      <h3 id="docs_title_ru" style="display:none">Документация</h3>
-      <p id="docs_desc_en" style="color:var(--muted)">Documentation:</p>
-      <p id="docs_desc_ru" style="color:var(--muted);display:none">Документация:</p>
-      <ul id="docs_list_en" style="color:var(--muted)">
-        <li><strong>docs/Project_Summary.md</strong> — Project summary (Markdown format)</li>
-        <li><strong>slides/Project_Presentation.pdf</strong> — Project presentation slides</li>
-        <li><strong>README.md</strong> — Complete project documentation</li>
-        <li><strong>visualizations/</strong> — Professional charts and graphs</li>
-      </ul>
-      <ul id="docs_list_ru" style="color:var(--muted);display:none">
-        <li><strong>docs/Project_Summary.md</strong> — Краткое описание проекта (формат Markdown)</li>
-        <li><strong>slides/Project_Presentation.pdf</strong> — Презентация проекта</li>
-        <li><strong>README.md</strong> — Полная документация проекта</li>
-        <li><strong>visualizations/</strong> — Профессиональные графики и диаграммы</li>
-      </ul>
-      <p id="docs_note_en" style="margin-top:8px;color:var(--muted)">Project Summary and presentation slides available. Project Summary can be converted to PDF if needed.</p>
-      <p id="docs_note_ru" style="margin-top:8px;color:var(--muted);display:none">Краткое описание проекта и слайды презентации доступны. Краткое описание можно конвертировать в PDF при необходимости.</p>
-      <div style="margin-top:12px">
-        <a class="btn" href="slides/Project_Presentation.pdf" target="_blank" id="btn_slides_en" style="display:inline-block">View Presentation</a>
-        <a class="btn" href="slides/Project_Presentation.pdf" target="_blank" id="btn_slides_ru" style="display:none">Просмотр презентации</a>
+    <section id="outlook" aria-labelledby="outlook-heading">
+      <div class="section-heading">
+        <h2 id="outlook-heading">Geomagnetic activity</h2>
+        <ul class="kp-legend" aria-label="Planetary Kp levels">
+          <li data-level="low">Low &lt; 4</li>
+          <li data-level="elevated">Elevated 4–&lt; 5</li>
+          <li data-level="storm">Storm ≥ 5</li>
+        </ul>
       </div>
-    </div>
-  </section>
+      <div class="panel-grid">
+        <article class="panel" data-chart="kp">
+          <div class="panel-heading"><h3>Observed Kp <span>past 24h</span></h3><span class="status chart-status" data-state="loading">Loading</span></div>
+          <div class="chart"><canvas role="img" aria-label="NOAA observed Kp for the past 24 hours"></canvas><p class="chart-empty">Waiting for NOAA…</p></div>
+          <p class="inspect"></p>
+        </article>
+        <article class="panel" data-chart="forecast">
+          <div class="panel-heading"><h3>NOAA Kp forecast</h3><span class="status chart-status" data-state="loading">Loading</span></div>
+          <div class="chart"><canvas role="img" aria-label="NOAA forecast Kp by three-hour interval"></canvas><p class="chart-empty">Waiting for NOAA…</p></div>
+          <p class="inspect"></p>
+        </article>
+      </div>
+      <article class="panel model-panel" aria-labelledby="model-heading">
+        <div class="panel-heading">
+          <h3 id="model-heading">SolarWind model forecast</h3>
+          <span class="status" id="model-status" data-state="loading" role="status">Loading</span>
+        </div>
+        <p id="model-time" class="measurement" hidden></p>
+        <dl id="model-values" hidden>
+          <div><dt>Probability of Kp ≥ 5</dt><dd id="model-probability">—</dd></div>
+          <div><dt>Estimated Kp</dt><dd id="model-kp">—</dd></div>
+        </dl>
+      </article>
+    </section>
 
-</main>
+    <section id="bulletins" aria-labelledby="bulletins-heading">
+      <div class="section-heading"><h2 id="bulletins-heading">NOAA bulletins</h2></div>
+      <div class="panel bulletin-panel">
+        <div class="bulletin-toolbar">
+          <label><span class="sr-only">Message type</span><select id="bulletin-filter"><option value="">All types</option></select></label>
+          <span id="bulletin-state" class="status" data-state="loading">Loading</span>
+        </div>
+        <p id="bulletin-empty">Waiting for NOAA…</p>
+        <div id="bulletin-list"></div>
+        <button type="button" id="more-bulletins" hidden>Show more</button>
+      </div>
+    </section>
+  </main>
 
-<footer>
-  <div>
-    <small>SolarWind Dashboard • © <span id="year"></span> • <a href="https://github.com/ilyaemelian/solar-wind-dashboard" target="_blank">GitHub / ilyaemelian</a></small>
-  </div>
-  <div>
-    <small>Prepared for applications • English first (EN/RU toggle)</small>
-  </div>
-</footer>
-
-  </div>
-
-  <script>
-    // complete language toggle
-    const enBtn = document.getElementById('enBtn');
-    const ruBtn = document.getElementById('ruBtn');
-    const enEls = ['title_en','lead_en','btn_view_viz_en','btn_pdf_en','key_features_en','features_list_en',
-                   'latest_snapshot_en','snapshot_desc_en','about_title_en','about_desc_en','about_list_en',
-                   'viz_title_en','viz_desc_en','label_speed_en','label_kp_en','label_timeline_en','label_earth_en',
-                   'viz_note_en','btn_interactive_en','btn_all_viz_en','data_title_en','data_sources_en','data_list_en',
-                   'data_note_en','btn_docs_en','docs_title_en','docs_desc_en','docs_list_en','docs_note_en','btn_slides_en'];
-    const ruEls = ['title_ru','lead_ru','btn_view_viz_ru','btn_pdf_ru','key_features_ru','features_list_ru',
-                   'latest_snapshot_ru','snapshot_desc_ru','about_title_ru','about_desc_ru','about_list_ru',
-                   'viz_title_ru','viz_desc_ru','label_speed_ru','label_kp_ru','label_timeline_ru','label_earth_ru',
-                   'viz_note_ru','btn_interactive_ru','btn_all_viz_ru','data_title_ru','data_sources_ru','data_list_ru',
-                   'data_note_ru','btn_docs_ru','docs_title_ru','docs_desc_ru','docs_list_ru','docs_note_ru','btn_slides_ru'];
-    function showLang(lang){
-      if(lang==='ru'){
-        ruEls.forEach(id=>{
-          const el = document.getElementById(id);
-          if(el) el.style.display = el.tagName === 'UL' ? 'block' : 'inline';
-        });
-        enEls.forEach(id=>{
-          const el = document.getElementById(id);
-          if(el) el.style.display = 'none';
-        });
-      } else {
-        enEls.forEach(id=>{
-          const el = document.getElementById(id);
-          if(el) el.style.display = el.tagName === 'UL' ? 'block' : 'inline';
-        });
-        ruEls.forEach(id=>{
-          const el = document.getElementById(id);
-          if(el) el.style.display = 'none';
-        });
-      }
-    }
-    enBtn.addEventListener('click',()=>showLang('en'));
-    ruBtn.addEventListener('click',()=>showLang('ru'));
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // default english
-    showLang('en');
-  </script>
-
+  <footer class="shell footer"><a href="https://services.swpc.noaa.gov/">NOAA SWPC data</a><a href="https://github.com/ilyaemelian/solar-wind-dashboard">Source code</a></footer>
 </body>
 </html>

@@ -1,115 +1,70 @@
-"""
-NASA Solar Wind Health Alert System
-Real-time monitoring for weather-sensitive people (cardiovascular patients, elderly)
-"""
+"""SolarWind dashboard, NOAA data, and the selected model forecast."""
 
-import sys
+import logging
+from datetime import UTC, datetime
 from pathlib import Path
+from sqlite3 import OperationalError
+from threading import Thread
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent))
+from flask import Flask, jsonify, send_from_directory
 
-from src.data_ingestion.noaa_api import fetch_noaa_alerts
-from src.alerts.alert_processor import AlertProcessor
-from src.translation.translator import translator
+from ml.final_live import FORECAST_DB, read_forecast, watch
+from src.hybrid_store import DEFAULT_DB, read_runs
+from src.noaa import NOAAClient, timestamp
 
-
-def fetch_nasa_data():
-    """Fetch NASA/NOAA space weather data"""
-    print("Fetching space weather data from NOAA...")
-    alerts = fetch_noaa_alerts()
-    print(f"Fetched {len(alerts)} alerts")
-    return alerts
+ROOT = Path(__file__).resolve().parent
 
 
-def process_alerts_for_health(alerts):
-    """Process alerts for weather-sensitive people"""
-    processor = AlertProcessor()
-    
-    # Filter health-relevant alerts
-    health_alerts = processor.filter_health_relevant(alerts)
-    print(f"Found {len(health_alerts)} alerts relevant for weather-sensitive people")
-    
-    # Process and translate
-    processed = processor.process_alerts(health_alerts, translate=True)
-    
-    return processed
+def create_app(client=None, hybrid_db=DEFAULT_DB, forecast_db=FORECAST_DB):
+    app = Flask(__name__)
+    noaa = client if client is not None else NOAAClient()
+
+    @app.get("/")
+    def index():
+        return send_from_directory(ROOT, "index.html")
+
+    @app.get("/api/dashboard")
+    def dashboard():
+        payload = noaa.snapshot()
+        response = jsonify(payload)
+        response.headers["Cache-Control"] = "no-store"
+        if all(feed["state"] == "unavailable" for feed in payload["feeds"].values()):
+            response.status_code = 503
+        return response
+
+    @app.get("/api/hybrid")
+    def hybrid():
+        try:
+            runs = read_runs(hybrid_db, latest_only=True)
+        except OperationalError:
+            runs = []
+        if not runs:
+            return jsonify(state="unavailable", mode="shadow"), 503
+        result = dict(runs[0])
+        if timestamp(result["target_start"]) <= datetime.now(UTC):
+            result["state"] = "expired"
+        response = jsonify(result)
+        response.headers["Cache-Control"] = "no-store"
+        return response
+
+    @app.get("/api/model-forecast")
+    def model_forecast():
+        try:
+            result = read_forecast(forecast_db, datetime.now(UTC))
+            response = jsonify(result)
+        except OperationalError:
+            response = jsonify(state="unavailable")
+            response.status_code = 503
+        response.headers["Cache-Control"] = "no-store"
+        return response
+
+    return app
 
 
-def visualize_data(alerts):
-    """Create visualizations of space weather data"""
-    try:
-        import matplotlib.pyplot as plt
-        import matplotlib.dates as mdates
-        from datetime import datetime
-        
-        if not alerts:
-            print("No alerts to visualize")
-            return
-        
-        # Create time series plot
-        fig, ax = plt.subplots(figsize=(12, 6))
-        
-        times = [alert['issue_time'] for alert in alerts]
-        severities = [alert.get('severity', 'NONE') for alert in alerts]
-        
-        # Convert times to datetime if needed
-        if isinstance(times[0], str):
-            times = [datetime.fromisoformat(t) for t in times]
-        
-        # Plot
-        ax.plot(times, [ord(s[0]) for s in severities], marker='o', linestyle='-')
-        ax.set_xlabel('Time')
-        ax.set_ylabel('Alert Severity')
-        ax.set_title('Space Weather Alerts for Weather-Sensitive People')
-        ax.grid(True)
-        
-        # Format x-axis
-        ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d %H:%M'))
-        plt.xticks(rotation=45)
-        
-        plt.tight_layout()
-        plt.savefig("visualizations/alerts_timeline.png", dpi=150)
-        print("Saved visualization: visualizations/alerts_timeline.png")
-        
-    except Exception as e:
-        print(f"Visualization error: {e}")
-
-
-def main():
-    """Main function"""
-    print("=" * 60)
-    print("NASA Solar Wind Health Alert System")
-    print("Monitoring for weather-sensitive people")
-    print("=" * 60)
-    
-    # Fetch data
-    alerts = fetch_nasa_data()
-    
-    if not alerts:
-        print("No alerts received. System may be offline or no active alerts.")
-        return
-    
-    # Process for health-sensitive people
-    health_alerts = process_alerts_for_health(alerts)
-    
-    # Display critical alerts
-    processor = AlertProcessor()
-    critical = processor.get_critical_alerts(alerts)
-    
-    if critical:
-        print(f"\n⚠️ CRITICAL ALERTS ({len(critical)}):")
-        for alert in critical[:5]:  # Show first 5
-            print(f"  - {alert.warning_type} ({alert.get_severity().name})")
-            print(f"    Health Impact: {alert.get_health_impact()}")
-    
-    # Visualize
-    if health_alerts:
-        visualize_data(health_alerts)
-    
-    print("\n✅ System running successfully")
-    print("Alerts are being monitored for weather-sensitive people")
+app = create_app()
 
 
 if __name__ == "__main__":
-    main()
+    logging.basicConfig(level=logging.INFO)
+    Thread(target=watch, name="model-forecast", daemon=True).start()
+    app.run(host="127.0.0.1", port=8000)

@@ -1,0 +1,62 @@
+[
+  {
+    "year": 2014,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2014.asc",
+    "sha256": "2c4aad1109b417fad9ad9ba60a6f4af0e3b28dd7a11b0c0a63f8a1d1c6e89393"
+  },
+  {
+    "year": 2015,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2015.asc",
+    "sha256": "3834f5a058ad5257a482b53b99f77b09ebc78325f5cc6d0ce40dbf7950c7bc09"
+  },
+  {
+    "year": 2016,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2016.asc",
+    "sha256": "2fd5c3938060090529355557f9f17d92f19cc861fe7721d5d762ead0a8240a8b"
+  },
+  {
+    "year": 2017,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2017.asc",
+    "sha256": "c0c14ca71a7261cad62855afab388ad80963749bde68b42e4e3470c0b86c2deb"
+  },
+  {
+    "year": 2018,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2018.asc",
+    "sha256": "0451806ab1ad95d7edfcc41756b71c37a857fd7139242e228a15d37f01e7e2d6"
+  },
+  {
+    "year": 2019,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2019.asc",
+    "sha256": "eb9f8457f8004bc3a658e7f45af3d4555a34434529daeaef14187273dc066fc1"
+  },
+  {
+    "year": 2020,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2020.asc",
+    "sha256": "599ef257a085411f7e23eddf54bd657dd818809e8fac76b624cfeb60e70f795a"
+  },
+  {
+    "year": 2021,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2021.asc",
+    "sha256": "e2fe84f2d3badc2688bf9de3545d41a9f9c3da0f3114df45b2977746f4396587"
+  },
+  {
+    "year": 2022,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2022.asc",
+    "sha256": "d3db85d0041dab7e815921456e6f95a68da01f3ae8cd0bb1418b7a2d668a2eea"
+  },
+  {
+    "year": 2023,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2023.asc",
+    "sha256": "56b292db051af3be09f086c0c5091ed18e36f28b5f9db29003bca5c5e3d6a402"
+  },
+  {
+    "year": 2024,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2024.asc",
+    "sha256": "1acc38b9531566bdec4f24d463c52fa68e03939acb4cfd9ab5905eb5460c43ef"
+  },
+  {
+    "year": 2025,
+    "source": "https://spdf.gsfc.nasa.gov/pub/data/omni/high_res_omni/omni_5min2025.asc",
+    "sha256": "f5793379d582f0b826036fa3a4d63227a2c2a7b18f41114f05e8a15b417ed7ac"
+  }
+]
